@@ -199,7 +199,7 @@ class PageLayoutViewHook
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($table);
         $queryBuilder
             ->from($table)
-            ->select('uid', 'title')
+            ->select('uid', 'title', 'images')
             ->where(
                 $queryBuilder->expr()->eq('tt_content_id', $queryBuilder->createNamedParameter($data['uid']))
             )
@@ -217,8 +217,7 @@ class PageLayoutViewHook
             $result .= BackendUtility::thumbCode(
                 $row,
                 'tx_generic_gallery_pictures',
-                'images',
-                $GLOBALS['BACK_PATH']
+                'images'
             );
         }
 

@@ -45,7 +45,8 @@ call_user_func(function () {
         'tx_genericgallery_pi1[item]',
         'tx_genericgallery_pi1[contentElement]',
     ];
-    $GLOBALS['TYPO3_CONF_VARS']['FE']['cHashRequiredParameters'] .= ','.implode(',', $requiredParameters);
+
+    array_push($GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['requireCacheHashPresenceParameters'], ...$requiredParameters);
 
     // Routing
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['routing']['aspects']['GenericGalleryImageItemMapper'] = ImageItemMapper::class;
