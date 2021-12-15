@@ -88,7 +88,7 @@ abstract class AbstractController extends ActionController
     {
         if ($this->uid === null) {
             $data = $this->getContentElementData();
-            $this->uid = $data['_LOCALIZED_UID'] ?: $data['uid'];
+            $this->uid = ($data['_LOCALIZED_UID'] ?? false) ?: $data['uid'];
         }
 
         return (int) $this->uid;

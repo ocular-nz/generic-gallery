@@ -36,7 +36,7 @@ class GalleryCollectionController extends AbstractController
         $paginator = new ArrayPaginator(
             $this->collection->getArray(),
             $page,
-            $this->currentSettings['paginate']['itemsPerPage'] ?: 10,
+            ($this->currentSettings['paginate']['itemsPerPage'] ?? false) ?: 10,
         );
 
         $this->view->assignMultiple([
